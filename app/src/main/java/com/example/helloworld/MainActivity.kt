@@ -1,5 +1,7 @@
 package com.example.helloworld
 
+import android.content.DialogInterface
+import androidx.appcompat.app.AlertDialog
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,7 +12,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val result = result
 
         calculate.setOnClickListener {
             val grade1 = Integer.parseInt(GradeOne.text.toString())
@@ -19,15 +20,27 @@ class MainActivity : AppCompatActivity() {
 
             val media = (grade1 + grade2) / 2
 
-            if (media >= 6 && abscense <= 10) {
+            if (grade1 > 10) {
+                val builder = AlertDialog.Builder(this)
+                builder.setMessage("Nota inválida, por favor coloque valores de 0 a 10.")
+                builder.setNeutralButton("Ok", { dialogInterface: DialogInterface, i: Int -> })
+                builder.show()
+            }
+            else if (grade2 > 10) {
+                val builder = AlertDialog.Builder(this)
+                builder.setMessage("Nota inválida, por favor coloque valores de 0 a 10.")
+                builder.setNeutralButton("Ok", { dialogInterface: DialogInterface, i: Int -> })
+                builder.show()
+            }
+            else if (media >= 6 && abscense <= 10) {
                 result.setText("Aluno aprovado" + "\n" + "Média:" + media + "\n" + "Faltas:" + abscense)
                 result.setTextColor(Color.GREEN)
             }
             else {
                 result.setText("Aluno reprovado" + "\n" + "Média:" + media + "\n" + "Faltas:" + abscense)
                 result.setTextColor(Color.RED)
+                finishAfterTransition()
             }
-
             }
         }
     }
