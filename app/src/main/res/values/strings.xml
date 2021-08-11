@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Cáculo de Média</string>
+
+    // Inputs de nota e faltas
+    <string name="type_grade_one">Digite a primeira nota</string>
+    <string name="type_grade_two">Digite a segunda nota</string>
+    <string name="type_abscense">Número de faltas</string>
+
+    // Botão de cálculo
+    <string name="button_calculate">Calcular média</string>
+</resources>
